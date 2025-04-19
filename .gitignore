@@ -25,6 +25,7 @@ storage/content-studio/*
 # Step 3完成：library.json已实现但不提交到git
 # Step 5完成：merge-vtt功能实现
 # Step 6完成：vtt-to-md功能实现
+# Step 7完成：extract-audio功能实现
 
 # Logs
 logs/
