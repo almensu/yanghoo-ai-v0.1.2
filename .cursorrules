@@ -1,0 +1,3 @@
+- 遵照 Manifest Specification (v0.3.6).md 文档
+- 遵照 任务步骤.md 文档
+- 每执行新的步骤，.gitignore 做相应的更新

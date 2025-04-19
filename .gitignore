@@ -63,7 +63,7 @@ temp/
 # Project specific files (not for public)
 .cursorrules
 任务步骤.md
-Manifest\ Specification\ \(v0.3.5\).md 
+Manifest\ Specification\ \(v0.3.6\).md 
 
 # Python specific 
 __pycache__/
