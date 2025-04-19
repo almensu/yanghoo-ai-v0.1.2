@@ -1,0 +1,17 @@
+{
+  "name": "merge-vtt-worker",
+  "version": "1.0.0",
+  "description": "Worker to merge English and Chinese VTT subtitle files",
+  "main": "index.ts",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "webvtt-parser": "^1.1.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
+  }
+} 

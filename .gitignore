@@ -23,6 +23,7 @@ config/*.json
 storage/content-studio/*
 !storage/content-studio/.gitkeep
 # Step 3完成：library.json已实现但不提交到git
+# Step 5完成：merge-vtt功能实现
 
 # Logs
 logs/
