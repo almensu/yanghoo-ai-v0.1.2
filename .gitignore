@@ -22,6 +22,7 @@ config/*.json
 # Storage files (processed media, etc)
 storage/content-studio/*
 !storage/content-studio/.gitkeep
+storage/content-studio/library.json
 
 # Logs
 logs/

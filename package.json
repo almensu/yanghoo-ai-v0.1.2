@@ -8,7 +8,8 @@
     "build": "tsc",
     "start": "ts-node src/index.ts",
     "dev": "ts-node-dev --respawn src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ingest": "ts-node src/cli.ts ingest"
   },
   "keywords": [
     "content-studio",
@@ -25,6 +26,8 @@
     "typescript": "^5.4.3"
   },
   "dependencies": {
+    "@types/uuid": "^10.0.0",
+    "uuid": "^11.1.0",
     "zod": "^3.22.4"
   }
 }
