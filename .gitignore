@@ -60,3 +60,21 @@ temp/
 .cursorrules
 任务步骤.md
 Manifest\ Specification\ \(v0.3.5\).md 
+
+# Python specific 
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+.env.local
+.pytest_cache/
+pytestdebug.log
+.coverage
+htmlcov/
+.tox/
+.nox/ 
