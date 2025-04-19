@@ -1,0 +1,61 @@
+# Dependency directories
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Build output
+dist/
+build/
+*.tsbuildinfo
+
+# Environment variables and secrets
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+*.pem
+config/*.json
+!config/default.json
+
+# Storage files (processed media, etc)
+storage/content-studio/*
+!storage/content-studio/.gitkeep
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Debug files
+.nyc_output/
+coverage/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.swp
+
+# Project specific files (not for public)
+.cursorrules
+任务步骤.md
+Manifest\ Specification\ \(v0.3.5\).md 
