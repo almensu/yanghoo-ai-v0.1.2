@@ -22,7 +22,7 @@ config/*.json
 # Storage files (processed media, etc)
 storage/content-studio/*
 !storage/content-studio/.gitkeep
-storage/content-studio/library.json
+# Step 3完成：library.json已实现但不提交到git
 
 # Logs
 logs/
