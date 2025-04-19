@@ -1,0 +1,17 @@
+{
+  "name": "vtt-to-md-worker",
+  "version": "1.0.0",
+  "description": "Worker to convert VTT subtitles to Markdown format",
+  "main": "index.ts",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "webvtt-parser": "^1.1.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
+  }
+} 
