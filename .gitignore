@@ -26,6 +26,7 @@ storage/content-studio/*
 # Step 5完成：merge-vtt功能实现
 # Step 6完成：vtt-to-md功能实现
 # Step 7完成：extract-audio功能实现
+# Step 8完成：whisperx转录功能实现，支持模型：tiny.en, medium.en, large-v3
 
 # Logs
 logs/

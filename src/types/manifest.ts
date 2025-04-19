@@ -138,6 +138,13 @@ const ArticleMetadataSchema = z.object({
   author: z.string().optional()
 });
 
+// Transcript whisperx json metadata
+const TranscriptWhisperXJsonMetadataSchema = z.object({
+  modelName: z.string(),
+  wordCount: z.number().optional(),
+  segmentCount: z.number().optional()
+});
+
 // FileItem schema with metadata based on type
 export const FileItemSchema = z.object({
   type: z.string(),
@@ -160,7 +167,8 @@ export const FileItemSchema = z.object({
       z.object({ type: z.literal('speech_summary_audio'), ...SpeechSummaryMetadataSchema.shape }),
       z.object({ type: z.literal('extracted_audio'), ...ExtractedAudioMetadataSchema.shape }),
       z.object({ type: z.literal('topic_tags_json'), ...TopicTagsMetadataSchema.shape }),
-      z.object({ type: z.literal('article_md'), ...ArticleMetadataSchema.shape })
+      z.object({ type: z.literal('article_md'), ...ArticleMetadataSchema.shape }),
+      z.object({ type: z.literal('transcript_whisperx_json'), ...TranscriptWhisperXJsonMetadataSchema.shape })
     ]).optional()
   ])
 });
