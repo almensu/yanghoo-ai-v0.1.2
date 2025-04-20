@@ -1,0 +1,40 @@
+{
+  "topics": [
+    "AI", 
+    "Machine Learning", 
+    "Neural Networks", 
+    "Data Science", 
+    "Deep Learning", 
+    "Ethics",
+    "Transformer Models",
+    "Computer Vision",
+    "NLP",
+    "Robotics",
+    "Reinforcement Learning",
+    "Explainable AI"
+  ],
+  "categories": {
+    "Core Technologies": [
+      "AI", 
+      "Machine Learning", 
+      "Deep Learning"
+    ],
+    "Model Architectures": [
+      "Neural Networks",
+      "Transformer Models"
+    ],
+    "Applications": [
+      "Computer Vision",
+      "NLP",
+      "Robotics",
+      "Data Science"
+    ],
+    "Research Areas": [
+      "Reinforcement Learning",
+      "Explainable AI"
+    ],
+    "Concerns": [
+      "Ethics"
+    ]
+  }
+} 

@@ -29,6 +29,7 @@ storage/content-studio/*
 # Step 7完成：extract-audio功能实现
 # Step 8完成：whisperx转录功能实现，支持模型：tiny.en, medium.en, large-v3
 # Step 9完成：ai-summary功能实现，使用DeepSeek API生成摘要
+# Step 10完成：topic-extractor功能实现，使用DeepSeek API提取主题标签
 
 # Logs
 logs/
