@@ -84,4 +84,9 @@ pytestdebug.log
 .coverage
 htmlcov/
 .tox/
-.nox/ 
+.nox/
+
+# Text chat worker
+workers/text-chat/node_modules/
+.deepseek_api_key
+storage/content-studio/*/chats/ 
