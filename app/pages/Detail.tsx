@@ -5,6 +5,7 @@ import VideoPlayer, { VideoSource } from '../components/Controls/VideoPlayer';
 import { Task, fetchManifest, getFileContent } from '../api/manifestApi';
 import ReactMarkdown from 'react-markdown';
 import ArticleEditor from '../components/ArticleEditor';
+import VideoEditor from '../components/VideoEditor';
 
 // 扩展VideoSource类型
 interface ExtendedVideoSource extends VideoSource {
@@ -679,6 +680,16 @@ const DetailContent: React.FC = () => {
       {/* 文章编辑器 */}
       <div className="mt-6">
         <ArticleEditor hashId={manifest?.hashId || ''} videoTimestamps={videoTimestamps} />
+      </div>
+      
+      {/* 视频编辑器 */}
+      <div className="mt-6">
+        <VideoEditor 
+          hashId={manifest?.hashId || ''} 
+          videoType={videoSource?.type || 'other'} 
+          videoDuration={manifest?.metadata?.duration}
+          subtitlesPath={getFilesByType('transcript_merged_vtt')[0]?.path}
+        />
       </div>
     </div>
   );

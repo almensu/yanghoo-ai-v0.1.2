@@ -36,6 +36,7 @@ storage/content-studio/*
 # Step 14完成：前端架构规划，组件层级结构与数据流设计
 # Step 15完成：基础前端框架搭建，包括路由、组件和样式设置
 # Step 18完成：文章编辑器实现，支持Markdown笔记编辑和视频时间戳引用
+# Step 19完成：视频编辑工具实现，基于VTT时间轴提取视频片段和时间轴引用
 
 # Frontend app specific
 app/node_modules/
@@ -104,3 +105,8 @@ storage/content-studio/*/chats/
 
 # Article markdown files
 **/articles/*.md 
+
+# Ignore edited video files
+storage/content-studio/*/edited/
+**/edited_video.*
+**/timeline_reference.json 
