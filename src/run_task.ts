@@ -3,6 +3,7 @@ import path from 'path';
 import { spawn } from 'child_process';
 import { Manifest, ManifestSchema, TaskStateEnum, FileItemStateEnum, FileItemState, Task } from './types/manifest';
 import { updateLibrary } from './updateLibrary';
+import { updateTaskDependencies } from './task_dependencies';
 
 // Map of task IDs to worker paths and command configurations
 const TASK_WORKER_MAP: Record<string, { 
@@ -276,6 +277,11 @@ async function executeWorker(
         );
       }
       
+      // Check for new tasks to trigger based on dependencies
+      if (code === 0) {
+        updatedManifest = updateTaskDependencies(updatedManifest);
+      }
+      
       // Write final manifest update
       await writeManifest(updatedManifest);
       
@@ -307,6 +313,8 @@ async function executeWorker(
         } : undefined
       );
       
+      // No dependency updates on error
+      
       await writeManifest(updatedManifest);
       await updateLibrary();
       
@@ -323,8 +331,16 @@ export async function runNextTask(hashId: string): Promise<boolean> {
     // Read the manifest
     const manifest = await readManifest(hashId);
     
+    // Check for and add new tasks based on dependencies
+    const updatedManifest = updateTaskDependencies(manifest);
+    
+    // Write back the manifest if it was updated
+    if (updatedManifest !== manifest) {
+      await writeManifest(updatedManifest);
+    }
+    
     // Find the first queued task
-    const queuedTask = manifest.tasks.find(task => task.state === TaskStateEnum.enum.queued);
+    const queuedTask = updatedManifest.tasks.find(task => task.state === TaskStateEnum.enum.queued);
     
     if (!queuedTask) {
       console.log(`No queued tasks found for ${hashId}`);
@@ -334,7 +350,7 @@ export async function runNextTask(hashId: string): Promise<boolean> {
     console.log(`Found queued task: ${queuedTask.id} for ${hashId}`);
     
     // Execute the worker for this task
-    await executeWorker(manifest, queuedTask);
+    await executeWorker(updatedManifest, queuedTask);
     
     return true;
   } catch (error) {
