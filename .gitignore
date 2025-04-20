@@ -37,6 +37,7 @@ storage/content-studio/*
 # Step 15完成：基础前端框架搭建，包括路由、组件和样式设置
 # Step 18完成：文章编辑器实现，支持Markdown笔记编辑和视频时间戳引用
 # Step 19完成：视频编辑工具实现，基于VTT时间轴提取视频片段和时间轴引用
+# Step 20完成：视频截图提取工具实现，支持多种截图模式和管理功能
 
 # Frontend app specific
 app/node_modules/
@@ -110,3 +111,15 @@ storage/content-studio/*/chats/
 storage/content-studio/*/edited/
 **/edited_video.*
 **/timeline_reference.json 
+
+# Ignore screenshot files
+storage/content-studio/*/screenshots/
+**/screenshot_*.jpg
+**/screenshot_*.png
+**/keyframe_*.jpg
+**/keyframe_*.png
+**/screenshots.zip
+**/collection.json
+**/screenshot_config.json
+**/temp_keyframes/
+workers/screenshot-extractor/node_modules/ 
