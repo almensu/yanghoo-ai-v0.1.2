@@ -294,11 +294,11 @@ export function findTasksToTrigger(manifest: Manifest): Task[] {
     // Create the task with all required fields
     const baseTask = dependency.createTask(manifest);
     const newTask: Task = {
-      id: baseTask.id,
-      title: baseTask.title,
+      id: baseTask.id || dependency.id,
+      title: baseTask.title || dependency.title,
       state: baseTask.state || TaskStateEnum.enum.queued,
       percent: baseTask.percent || 0,
-      relatedOutput: baseTask.relatedOutput,
+      relatedOutput: baseTask.relatedOutput || dependency.relatedOutput,
       startedAt: null,
       updatedAt: null,
       error: null,
@@ -363,7 +363,7 @@ function getDerivedFrom(taskId: string, manifest: Manifest): string[] {
  */
 function getPathForType(manifest: Manifest, fileType: string): string {
   const file = manifest.fileManifest.find(f => f.type === fileType);
-  return file?.path || '';
+  return file?.path || getDefaultPathForFileType(fileType);
 }
 
 /**
