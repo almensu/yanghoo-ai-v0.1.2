@@ -38,6 +38,8 @@ storage/content-studio/*
 # Step 18完成：文章编辑器实现，支持Markdown笔记编辑和视频时间戳引用
 # Step 19完成：视频编辑工具实现，基于VTT时间轴提取视频片段和时间轴引用
 # Step 20完成：视频截图提取工具实现，支持多种截图模式和管理功能
+# Step 21完成：图像AI对话初始化工具实现，支持DeepSeek API图像分析
+# Step 23完成：资源管理工具实现，支持资源删除策略和清理建议功能
 
 # Frontend app specific
 app/node_modules/
@@ -122,4 +124,9 @@ storage/content-studio/*/screenshots/
 **/collection.json
 **/screenshot_config.json
 **/temp_keyframes/
-workers/screenshot-extractor/node_modules/ 
+workers/screenshot-extractor/node_modules/
+
+# Resource manager worker
+workers/resource-manager/node_modules/
+workers/resource-manager/dist/
+storage/content-studio/*/.backups/ 
