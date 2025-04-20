@@ -4,6 +4,7 @@ import { ManifestProvider, useManifest } from '../state/context/ManifestContext'
 import VideoPlayer, { VideoSource } from '../components/Controls/VideoPlayer';
 import { Task, fetchManifest, getFileContent } from '../api/manifestApi';
 import ReactMarkdown from 'react-markdown';
+import ArticleEditor from '../components/ArticleEditor';
 
 // 扩展VideoSource类型
 interface ExtendedVideoSource extends VideoSource {
@@ -35,6 +36,72 @@ const DetailContent: React.FC = () => {
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [audioElement, setAudioElement] = useState<HTMLAudioElement | null>(null);
   const navigate = useNavigate();
+
+  // 提取视频片段时间戳供文章编辑器引用
+  const [videoTimestamps, setVideoTimestamps] = useState<{[key: string]: number}>({});
+  
+  // 解析字幕文件中的时间戳
+  useEffect(() => {
+    const extractTimestamps = async () => {
+      if (!manifest) return;
+      
+      // 查找字幕文件
+      const subtitleFiles = getFilesByType('transcript_merged_vtt');
+      if (subtitleFiles.length > 0 && subtitleFiles[0].state === 'ready') {
+        try {
+          const content = await getFileContent(manifest.hashId, subtitleFiles[0].path);
+          if (content) {
+            // 简单解析VTT文件提取关键时间点
+            const timestamps: {[key: string]: number} = {};
+            const lines = content.split('\n');
+            let currentText = '';
+            let currentTime = 0;
+            
+            for (let i = 0; i < lines.length; i++) {
+              const line = lines[i].trim();
+              
+              // 寻找时间标记行，格式类似 "00:01:15.000 --> 00:01:20.000"
+              if (line.includes(' --> ')) {
+                const timeStr = line.split(' --> ')[0];
+                // 将时间转换为秒
+                const parts = timeStr.split(':');
+                if (parts.length >= 2) {
+                  // 处理 MM:SS.000 或 HH:MM:SS.000 格式
+                  let seconds = 0;
+                  if (parts.length === 2) {
+                    seconds = parseInt(parts[0]) * 60 + parseFloat(parts[1]);
+                  } else if (parts.length === 3) {
+                    seconds = parseInt(parts[0]) * 3600 + parseInt(parts[1]) * 60 + parseFloat(parts[2]);
+                  }
+                  currentTime = seconds;
+                }
+              } 
+              // 字幕文本行
+              else if (line && !line.includes('WEBVTT') && !line.match(/^\d+$/)) {
+                currentText = line;
+                
+                // 提取可能的关键点
+                // 只提取较长并可能有意义的句子作为引用点
+                if (currentText.length > 30 && currentText.endsWith('.')) {
+                  // 使用句子前几个字作为标识
+                  const key = currentText.substring(0, 20) + '...';
+                  if (!timestamps[key]) {
+                    timestamps[key] = currentTime;
+                  }
+                }
+              }
+            }
+            
+            setVideoTimestamps(timestamps);
+          }
+        } catch (err) {
+          console.error('Error extracting timestamps:', err);
+        }
+      }
+    };
+    
+    extractTimestamps();
+  }, [manifest, getFilesByType]);
 
   // 加载文本内容
   useEffect(() => {
@@ -607,6 +674,11 @@ const DetailContent: React.FC = () => {
             )}
           </div>
         </div>
+      </div>
+      
+      {/* 文章编辑器 */}
+      <div className="mt-6">
+        <ArticleEditor hashId={manifest?.hashId || ''} videoTimestamps={videoTimestamps} />
       </div>
     </div>
   );

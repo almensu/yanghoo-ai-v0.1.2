@@ -185,4 +185,95 @@ export const upgradeMediaQuality = async (
     console.error('Error upgrading media:', error);
     return false;
   }
+};
+
+/**
+ * Creates a new article for the specified content
+ */
+export const createArticle = async (hashId: string, content: string, title: string): Promise<boolean> => {
+  try {
+    const response = await fetch(`/api/content/${hashId}/article`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ content, title }),
+    });
+    
+    if (!response.ok) throw new Error(`Failed to create article: ${response.statusText}`);
+    return true;
+  } catch (error) {
+    console.error('Error creating article:', error);
+    return false;
+  }
+};
+
+/**
+ * Gets all articles for a specific content
+ */
+export const getArticles = async (hashId: string): Promise<Array<{id: string, title: string, lastModified: string}>> => {
+  try {
+    const response = await fetch(`/api/content/${hashId}/articles`);
+    if (!response.ok) throw new Error(`Failed to fetch articles: ${response.statusText}`);
+    
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching articles:', error);
+    return [];
+  }
+};
+
+/**
+ * Gets a specific article by ID
+ */
+export const getArticle = async (hashId: string, articleId: string): Promise<{content: string, title: string, lastModified: string} | null> => {
+  try {
+    const response = await fetch(`/api/content/${hashId}/article/${articleId}`);
+    if (!response.ok) throw new Error(`Failed to fetch article: ${response.statusText}`);
+    
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching article:', error);
+    return null;
+  }
+};
+
+/**
+ * Updates an existing article
+ */
+export const updateArticle = async (hashId: string, articleId: string, content: string, title: string): Promise<boolean> => {
+  try {
+    const response = await fetch(`/api/content/${hashId}/article/${articleId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ content, title }),
+    });
+    
+    if (!response.ok) throw new Error(`Failed to update article: ${response.statusText}`);
+    return true;
+  } catch (error) {
+    console.error('Error updating article:', error);
+    return false;
+  }
+};
+
+/**
+ * Deletes an article
+ */
+export const deleteArticle = async (hashId: string, articleId: string): Promise<boolean> => {
+  try {
+    const response = await fetch(`/api/content/${hashId}/article/${articleId}`, {
+      method: 'DELETE',
+    });
+    
+    if (!response.ok) throw new Error(`Failed to delete article: ${response.statusText}`);
+    return true;
+  } catch (error) {
+    console.error('Error deleting article:', error);
+    return false;
+  }
 }; 

@@ -100,3 +100,6 @@ htmlcov/
 workers/text-chat/node_modules/
 .deepseek_api_key
 storage/content-studio/*/chats/ 
+
+# Article markdown files
+**/articles/*.md 
