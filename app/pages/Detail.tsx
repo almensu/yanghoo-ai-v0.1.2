@@ -6,6 +6,7 @@ import { Task, fetchManifest, getFileContent } from '../api/manifestApi';
 import ReactMarkdown from 'react-markdown';
 import ArticleEditor from '../components/ArticleEditor';
 import VideoEditor from '../components/VideoEditor';
+import ScreenshotExtractor from '../components/ScreenshotExtractor';
 
 // 扩展VideoSource类型
 interface ExtendedVideoSource extends VideoSource {
@@ -40,6 +41,10 @@ const DetailContent: React.FC = () => {
 
   // 提取视频片段时间戳供文章编辑器引用
   const [videoTimestamps, setVideoTimestamps] = useState<{[key: string]: number}>({});
+  
+  // 视频工具相关状态
+  const [activeVideoTool, setActiveVideoTool] = useState<'editor' | 'screenshot'>('editor');
+  const [screenshotCollectionPath, setScreenshotCollectionPath] = useState<string | null>(null);
   
   // 解析字幕文件中的时间戳
   useEffect(() => {
