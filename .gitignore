@@ -31,6 +31,7 @@ storage/content-studio/*
 # Step 9完成：ai-summary功能实现，使用DeepSeek API生成摘要
 # Step 10完成：topic-extractor功能实现，使用DeepSeek API提取主题标签
 # Step 11完成：text-chat功能实现，支持AI对话初始化和模板
+# Step 12完成：run_task.ts调度器实现，支持任务自动推进并更新状态
 
 # Logs
 logs/

@@ -10,7 +10,9 @@
     "dev": "ts-node-dev --respawn src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "ingest": "ts-node src/cli.ts ingest",
-    "summary": "workers/ai-summary/test.sh"
+    "summary": "workers/ai-summary/test.sh",
+    "run-task": "ts-node src/run_task.ts",
+    "process-all": "ts-node src/run_task.ts all"
   },
   "keywords": [
     "content-studio",
