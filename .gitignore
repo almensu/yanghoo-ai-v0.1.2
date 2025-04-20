@@ -40,6 +40,7 @@ storage/content-studio/*
 # Step 20完成：视频截图提取工具实现，支持多种截图模式和管理功能
 # Step 21完成：图像AI对话初始化工具实现，支持DeepSeek API图像分析
 # Step 23完成：资源管理工具实现，支持资源删除策略和清理建议功能
+# Step 24完成：AI对话管理工具实现，支持对话搜索、导出导入和标签管理
 
 # Frontend app specific
 app/node_modules/
@@ -129,4 +130,8 @@ workers/screenshot-extractor/node_modules/
 # Resource manager worker
 workers/resource-manager/node_modules/
 workers/resource-manager/dist/
-storage/content-studio/*/.backups/ 
+storage/content-studio/*/.backups/
+
+# Chat manager worker
+workers/chat-manager/node_modules/
+workers/chat-manager/dist/ 
