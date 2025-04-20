@@ -34,6 +34,7 @@ storage/content-studio/*
 # Step 12完成：run_task.ts调度器实现，支持任务自动推进并更新状态
 # Step 13完成：实现task_dependencies.ts，支持基于文件状态自动触发任务
 # Step 14完成：前端架构规划，组件层级结构与数据流设计
+# Step 15完成：基础前端框架搭建，包括路由、组件和样式设置
 
 # Frontend app specific
 app/node_modules/

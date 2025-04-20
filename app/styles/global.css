@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 全局样式 */
+body {
+  @apply bg-base-bg text-base-text;
+}
+
+/* 自定义组件样式 */
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary/90;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden;
+  }
+  
+  .card-header {
+    @apply p-4 border-b border-gray-200;
+  }
+  
+  .card-body {
+    @apply p-4;
+  }
+  
+  .input-control {
+    @apply border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50;
+  }
+  
+  .tag {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .tag-blue {
+    @apply bg-blue-100 text-blue-800;
+  }
+  
+  .tag-purple {
+    @apply bg-purple-100 text-purple-800;
+  }
+  
+  .tag-green {
+    @apply bg-green-100 text-green-800;
+  }
+  
+  .tag-red {
+    @apply bg-red-100 text-red-800;
+  }
+  
+  .tag-yellow {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+}
+
+/* 响应式布局 */
+.three-column-layout {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400;
+}
+
+/* 加载动画 */
+.loading {
+  @apply flex items-center justify-center;
+}
+
+.loading-spinner {
+  @apply animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary;
+}
+
+/* 过渡动画 */
+.fade-in {
+  @apply transition-opacity duration-300 ease-in-out;
+}
+
+.fade-in-enter {
+  @apply opacity-0;
+}
+
+.fade-in-enter-active {
+  @apply opacity-100;
+}
+
+.fade-in-exit {
+  @apply opacity-100;
+}
+
+.fade-in-exit-active {
+  @apply opacity-0;
+} 
