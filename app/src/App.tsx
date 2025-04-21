@@ -1,9 +1,9 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import HomePage from '../pages/Home';
-import DetailPage from '../pages/Detail';
-import Header from '../components/Layout/Header';
-import Footer from '../components/Layout/Footer';
+import HomePage from './pages/Home';
+import DetailPage from './pages/Detail';
+import Header from './components/Layout/Header';
+import Footer from './components/Layout/Footer';
 
 function App() {
   return (
